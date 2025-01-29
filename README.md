@@ -1,2 +1,3 @@
 # learn-log
-A track of my daily learnings
+A track of my daily learnings!!🎯
+
