@@ -205,6 +205,6 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 const avgDolphins = (96+108+89)/3;
 const avgKoalas = (88+91+110)/3;
 if(avgDolphins>avgKoalas && avgDolphins>=100)console.log(`Dolphins win the trophy`);
-else if(avgDolphins<avgKolas && avgKoalas>=100) console.log(`Koalas win the trophy`);
+else if(avgDolphins<avgKoalas && avgKoalas>=100) console.log(`Koalas win the trophy`);
 else if (avgDolphins === avgKoalas && avgDolphins >= 100 && avgKoalas >= 100)console.log(`Both win the trophy!`);
-else console.log('No one wins the trophy 😭');
+else console.log(`No one wins the trophy`);
