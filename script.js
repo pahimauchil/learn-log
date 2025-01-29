@@ -52,8 +52,19 @@ console.log(firstName+' '+lastName);
 // Assignment operators
 let x;
 x += 10; 
-x *= 4;
+x *= 4;// CHALLENGE -1
 
+//BMI = mass / height ** 2 = mass / (height * height). (mass in kg and height in meter).
 
+const massMark = 78;
+const heightMark = 1.68;
+const massJohn = 92;
+const heightJohn = 1.95;
+
+const BMIMark = massMark / heightMark ** 2 ;
+const BMIJohn = massJohn / heightJohn ** 2 ;
+
+const markHigherBMI = BMIMark > BMIJohn;
+console.log(BMIMark, BMIJohn, markHigherBMI);
 
 
