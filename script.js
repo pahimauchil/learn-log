@@ -208,3 +208,81 @@ if(avgDolphins>avgKoalas && avgDolphins>=100)console.log(`Dolphins win the troph
 else if(avgDolphins<avgKoalas && avgKoalas>=100) console.log(`Koalas win the trophy`);
 else if (avgDolphins === avgKoalas && avgDolphins >= 100 && avgKoalas >= 100)console.log(`Both win the trophy!`);
 else console.log(`No one wins the trophy`);
+
+
+//  SWITCH
+
+const day = 'saturday';
+
+switch(day){
+  case 'monday':
+    console.log("Plan");
+    console.log('code');
+    break;
+  case 'tuesday':
+    console.log('Write');
+    break;
+  case 'wednesday':
+    console.log('Study');
+    break;
+  case 'thursday':
+  case 'friday':
+    console.log('Prepare');
+    break;
+  case 'saturday':
+  case 'sunday':
+    console.log('Enjoy the weekend');
+    break;
+  default:
+    console.log('Invalid input');
+  
+}
+
+
+//above switch in if else form
+
+if (day === 'monday') {
+  console.log('Plan ');
+  console.log('code');
+} else if (day === 'tuesday') {
+  console.log('Write');
+} else if (day === 'wednesday') {
+  console.log('Study');
+} else if (day === 'thursday' || day === 'friday') {
+  console.log('Prepare');
+} else if (day === 'saturday' || day === 'sunday') {
+  console.log('Enjoy the weekend');
+} else {
+  console.log('Invalid input');
+}
+
+
+// Statements and Expressions
+3 + 4
+1991
+true && false && !false
+
+if (23 > 10) {
+  const str = '23 is bigger';
+}
+
+
+const me = 'John';
+console.log(`I'm ${2037 - 1991} years old ${me}`);
+//one can't put statement inside '${ }',if else is a statement,thus cannot be put.only expressions are allowed
+
+
+//Ternary operator
+
+const drink = age>=18? 'wine':'water';
+console.log(drink);
+//ternary operation returns a value,thus is an expression ,which can be put in '${ }'
+console.log(`I like to drink ${age >= 18 ? 'wine 🍷' : 'water 💧'}`);
+
+
+const bill = 275;
+const tip = bill>=50 && bill<=300 ? bill*(15/100) :bill*(20/100);
+console.log(`the bill is ${bill}`);
+console.log(`The tip is ${tip}`);
+console.log(`The final value is ${bill+tip}`);
+
