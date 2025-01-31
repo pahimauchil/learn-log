@@ -189,15 +189,15 @@ if(friends.includes('Steve')){
 }
 
 //CHALLENGE -2 
-const calcTip = function (bill){
-   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
-  }
-const bills = [125, 555, 44];
-const tips = [calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2])];
-console.log(tips);
-const total = [bills[0]+tips[0],bills[1]+tips[1],bills[2]+tips[2]];
-console.log(total);
-console.log(bills,tips,total);
+// const calcTip = function (bill){
+//    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+//   }
+// const bills = [125, 555, 44];
+// const tips = [calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2])];
+// console.log(tips);
+// const total = [bills[0]+tips[0],bills[1]+tips[1],bills[2]+tips[2]];
+// console.log(total);
+// console.log(bills,tips,total);
 
 
 //Objects
@@ -220,14 +220,14 @@ console.log(harry["first"+nameKey]);
 console.log(harry["last"+nameKey]);
 //above can't be done using dot operator
 
-const InterestedIn = prompt(`What do you want to know at Harry?`);
+// const InterestedIn = prompt(`What do you want to know at Harry?`);
 
-if(harry[InterestedIn]){
-  console.log(harry[InterestedIn])
+// if(harry[InterestedIn]){
+//   console.log(harry[InterestedIn])
 
-}else{
-    console.log(`Wrong request`);  
-}
+// }else{
+//     console.log(`Wrong request`);  
+// }
 
 harry.location = 'Protugal';
 //or
@@ -309,3 +309,104 @@ if(Mark.BMI>John.BMI){
   console.log(`${John.fullName}'s BMI (${John.BMI}) is higher than ${Mark.fullName}'s BMI (${Mark.BMI})!`);
 }
 
+
+//Loops
+
+for(let rep =1;rep<=10;rep++){
+  console.log(`Lifting weights repetition ${rep}`);
+}
+
+const jonasArray =[
+  'Jonas',
+  '2025-1991',
+  'teacher',
+  ['Michael', 'Peter', 'Steven'],
+  true
+];
+
+const types =[];
+for (let i = 0; i < jonasArray.length; i++) {
+  console.log(jonasArray[i], typeof jonasArray[i]);
+  // types[i] = typeof jonas[i];
+  types.push(typeof jonasArray[i]);
+  
+}
+
+console.log(types);
+
+const birthYears =[1991,1934,1936,1999];
+
+const agess =[];
+for(let i=0;i<birthYears.length;i++){
+  // agess[i]=2025-birthYears[i];
+  agess.push(2025-birthYears[i]); 
+}
+console.log(agess);
+
+
+console.log(`~~~~~Only Strings~~~~~~~`)
+for(let i=0;i<=jonasArray.length;i++){
+  if(typeof jonasArray[i]!=='string') continue;
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+// console.log(`~~~~~Break with Numbers~~~~~~~`)
+// for(let i=0;i<=jonasArray.length;i++){
+//   if(typeof jonasArray[i]!=='number') break;
+//   console.log(jonasArray[i], typeof jonasArray[i]);
+// }
+
+//Backward Looping
+
+for(let i=jonasArray.length-1;i>=0;i--){
+  console.log(jonasArray[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`-------- Starting exercise ${exercise}`);
+
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+  }
+}
+
+//While loop
+let rep = 1;
+while (rep <= 10) {
+  console.log(`Lifting weights repetition ${rep} `);
+  rep++;
+}
+
+let dice =Math.trunc(Math.random() * 6)+1;
+console.log(dice)
+
+while(dice!==6){
+  console.log(`You rolled a ${dice}`);
+  dice =Math.trunc(Math.random() * 6)+1;
+}
+if(dice===6)console.log('Loop is about to end..');
+
+// CHALLENGE - 4
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86 ,52];
+const tips = [];
+const totals = [];
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+for(let i=0;i<bills.length;i++){
+   const tip = calcTip(bills[i]);
+  tips.push(tip);
+  totals.push(tip + bills[i]);
+}
+console.log(bills, tips, totals);
+const calculateAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    // sum = sum + arr[i];
+    sum += arr[i];
+  }
+  return sum / arr.length;
+}
+console.log(calculateAverage([2, 3, 7]));
+console.log(calculateAverage(totals));
+console.log(calculateAverage(tips));
