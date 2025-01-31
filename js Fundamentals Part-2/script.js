@@ -138,44 +138,174 @@ console.log(friends.length);
  friends[3] = 'Jay';
  console.log(friends);
 
- const calcAge = function (birthYeah) {
-  return 2037 - birthYeah;
+ //friends =["bob","alice"] //we cannot change an entire array,can only change elements
+const firstName ='Pahima';
+ const Pahima= [firstName,'Uchil',2037-2005,'student',friends];
+//can store another variable ,array and also solve expressions in an array.
+
+console.log(Pahima);
+console.log(Pahima.length);
+
+//to calculate age of elements of the array
+const calcAge =function (birthYear){
+  return 2037 -birthYear;
 }
-const years = [1990, 1967, 2002, 2010, 2018];
 
-const ages1 = calcAge(years[0]);
-const ages2 = calcAge(years[1]);
-const ages3 = calcAge(years[years.length - 1]);
-console.log(ages1, ages2, ages3);
+const yearss = [1990,1993,1934,2005,2013];
+const agee1 = console.log(calcAge(yearss[0]));
 
-const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
+//we can also put function calls in an array
+const ages = [calcAge(yearss[0]),calcAge(yearss[1]),calcAge(yearss[3]),calcAge(yearss[yearss.length-1])]
 console.log(ages);
 
+//ARRAY METHODS
 
-// Basic Array Operations 
-const friends = ['Michael', 'Steven', 'Peter'];
-
-// Add elements
-const newLength = friends.push('Jay');
-console.log(friends);
-console.log(newLength);
-
-friends.unshift('John');
+//Add Elements
+// const friends = ['Steve','Michael','Peter'];
+friends.push('Harry'); //inserts an element at the end
 console.log(friends);
 
-// Remove elements
-friends.pop(); 
-const popped = friends.pop();
+friends.unshift('John'); //inserts element at the beginning of the array
+console.log(friends);
+
+
+//Remove Elements
+friends.pop(); //Removes the last element
+const popped = friends.pop(); //can also store popped element and display it
 console.log(popped);
 console.log(friends);
 
-friends.shift();
+friends.shift(); //Removes first element
 console.log(friends);
 
-console.log(friends.indexOf('Steven'));
-console.log(friends.indexOf('Bob'));
 
-friends.push(23);
-console.log(friends.includes('Steven'));
-console.log(friends.includes('Bob'));
-console.log(friends.includes(23));
+//To check what postion an element is in,returns index
+console.log(friends.indexOf('Steve'));
+
+console.log(friends.includes('Steve')); //checks if element is present or not returns T/F
+
+if(friends.includes('Steve')){
+  console.log(`You have a friend called Steve`);
+}
+
+//CHALLENGE -2 
+const calcTip = function (bill){
+   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+  }
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2])];
+console.log(tips);
+const total = [bills[0]+tips[0],bills[1]+tips[1],bills[2]+tips[2]];
+console.log(total);
+console.log(bills,tips,total);
+
+
+//Objects
+
+const harry ={
+  firstName :'Harry',
+  lastName :'Potter',
+  age:2027-2000,
+  friends:['Ron','Hermione'],
+};
+
+console.log(harry);
+//dot operator is used to access the properties
+console.log(harry.lastName);
+// OR
+console.log(harry['lastName']);
+
+const nameKey = 'Name';
+console.log(harry["first"+nameKey]);
+console.log(harry["last"+nameKey]);
+//above can't be done using dot operator
+
+const InterestedIn = prompt(`What do you want to know at Harry?`);
+
+if(harry[InterestedIn]){
+  console.log(harry[InterestedIn])
+
+}else{
+    console.log(`Wrong request`);  
+}
+
+harry.location = 'Protugal';
+//or
+harry['twitter'] = '@harry';
+console.log(harry);
+
+console.log(`${harry.firstName} has ${harry.friends.length} friends, and his best friend is called ${harry.friends[0]}`);
+
+
+//Object Methods
+//we can also put functions inside a object (using function expressions)
+const jonas = {
+  firstName: 'Jonas',
+  lastName: 'Schmedtmann',
+  birthYear: 1991,
+  job: 'teacher',
+  friends: ['Michael', 'Peter', 'Steven'],
+  hasDriversLicense: true,
+//   calcAge :function(){
+//    const age = 2037 - birthYear;
+//     return age;
+//   }
+// };
+// console.log(jonas.calcAge(1991));
+// console.log(jonas['calcAge'](1991));
+//Above we have the birthyear as a property need not provide again
+//can refer to it by using this keyword.
+
+calcAge :function(){
+  const age=2025 - this.birthYear;
+  return age;
+},
+getSummary:function(){
+
+  return console.log(`${this.firstName} is a ${this.calcAge()}- year old ${this.job} and he has ${(this.hasDriversLicense?'a':'no')} drivers license`)
+}
+};
+
+console.log(jonas.calcAge()); 
+console.log(jonas.getSummary());
+
+//by doing below the function creates a new property age and saves it and while calling we can directly call the property age
+/*
+calcAge :function(){
+   this.age = 2025 - this.birthYear;
+  return this.age;
+}
+};
+console.log(jonas.age);
+*/
+
+//CHALLENGE - 3
+
+const Mark = {
+  fullName:'Mark Miller',
+  mass: 78,
+  height:1.69,
+  calcBMI:function(){
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  }
+};
+
+const John = {
+  fullName:'John Smith',
+  mass: 92,
+  height:1.95,
+  calcBMI:function(){
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  }
+};
+Mark.calcBMI();
+John.calcBMI();
+
+if(Mark.BMI>John.BMI){
+  console.log(`${Mark.fullName}'s BMI (${Mark.BMI}) is higher than ${John.fullName}'s (${John.BMI})!`);
+}else if(John.BMI>Mark.BMI){
+  console.log(`${John.fullName}'s BMI (${John.BMI}) is higher than ${Mark.fullName}'s BMI (${Mark.BMI})!`);
+}
+
