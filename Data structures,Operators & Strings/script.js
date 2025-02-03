@@ -151,13 +151,13 @@ const str = 'Pahima';
 const letters = [...str ,' ', 'R'] //this gives individual elements
 console.log(letters); // ['P', 'a', 'h', 'i', 'm', 'a', ' ', 'R']
 
- const ingredients = [prompt(`Let's make pasta! Ingredient 1?`,prompt(`Let's make pasta! Ingredient 2?`),prompt(`Let's make pasta! Ingredient 3?`))];
- console.log(ingredients);
+//  const ingredients = [prompt(`Let's make pasta! Ingredient 1?`,prompt(`Let's make pasta! Ingredient 2?`),prompt(`Let's make pasta! Ingredient 3?`))];
+//  console.log(ingredients);
 
 //  restaurant.orderPasta(ingredients[0],ingredients[1],ingredients[2]);
 //instead of doing this,simply use spread operator
 
- restaurant.orderPasta(...ingredients);
+//  restaurant.orderPasta(...ingredients);
 
 
  const newRestaurant = {founededIn:1998,...restaurant,founder:'Pahima'} //This creates a new restaurant which will have all the props of the restaurant and additional stuff you add here.
@@ -269,3 +269,179 @@ rest2.numGuests ??= 10;
 // rest2.owner = rest2.owner && '<ANONYMOUS'
 rest2.owner &&= '<ANONYMOUS'
 rest1.owner &&= '<ANONYMOUS'
+
+
+
+
+//Coding Challenge -1
+
+const game = {
+  team1 : 'Bayern Munich',
+  team2 :'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+
+const [players1,players2] = games.players;
+console.log(players1, players2);
+
+
+const [gk , ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+
+
+const {
+  odds: { team1, x: draw, team2 },
+} = game;
+console.log(team1, draw, team2);
+
+
+const printGoals = function (...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
+};
+
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals('Davies', 'Muller');
+printGoals(...game.scored);
+
+//7
+team1 < team2 && console.log('Team 1 is more likely to win');
+team1 > team2 && console.log('Team 2 is more likely to win');
+
+
+
+// Join 2 arrays
+const menuu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuu);
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const stri = 'Jonas';
+const letterss = [...stri, ' ', 'S.'];
+console.log(letterss);
+console.log(...str);
+// console.log(`${...str} Schmedtmann`);
+
+// Real-world example
+const ingredients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
+  // prompt('Ingredient 2?'),
+  // prompt('Ingredient 3'),
+];
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients);
+
+// Objects
+const newRestaurantt = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurantt);
+
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+
+
+//Looping Objects: Object Keys, Values, and Entries
+
+// Property NAMES
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// Property VALUES
+const values = Object.values(openingHours);
+console.log(values);
+
+// Entire object
+const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// [key, value]
+for (const [day, { open, close }] of entries) {
+  console.log(`On ${day} we open at ${open} and close at ${close}`);
+}
+
+
+
+// Optional Chaining
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon.open);
+
+// WITH optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// Arrays
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+// const users = [];
+
+console.log(users[0]?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
+
+
