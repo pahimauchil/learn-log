@@ -42,6 +42,28 @@ btnScrollTo.addEventListener('click',function(e){
     section1.scrollIntoView({behavior:'smooth'});
 });
 
+//1. Add event listener to common parent element 
+//2. Determine what element originated the event
+
+document.querySelector('.nav_links').addEventListener('click',function(e){
+  console.log(e.target);
+  e.preventDefault();
+  //Matching Strategy
+  if(e.target.classList.contains('nav_link')){
+    const id = e.target.getAttribute('href');
+    console.log(id);
+   document.querySelector(id).scrollIntoView({behavior:'smooth'});
+  }
+});
+//  document.querySelectorAll('.nav__link').forEach(function(el){
+//   el.addEventListener('click',function(e){
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//   });
+//   document.querySelector(id).scrollIntoView({behavior:'smooth'});
+//  });
+
+
 // const h1 = document.querySelector('h1');
 // const alerth1 = "hey"
 // h1.addEventListener('mouseenter',function(e){
@@ -53,6 +75,29 @@ btnScrollTo.addEventListener('click',function(e){
 
 // setTimeout(() =>h1.removeEventListener('mouseenter',alerth1),3000);
 
-document.querySelector('.nav__link').addEventListener('click',function(e){
-  console.log.apply('LINK');
-});
+
+//Bubbling and capturing Concept 
+
+
+// const randomInt = (min,max) =>
+//   Math.floor(Math.random() * (max - min + 1)+min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`;
+
+// document.querySelector('.nav__link').addEventListener('click',function(e){
+//   this.style.backgroundColor = randomColor();
+//   console.log.apply('LINK',e.target);
+
+//   //Stopping propagation
+//   // e.stopPropagation();
+// });
+
+// document.querySelector('.nav__links').addEventListener('click',function(e){
+//   this.style.backgroundColor = randomColor();
+//   console.log.apply('CONTAINER',e.target);
+// });
+
+// document.querySelector('.nav').addEventListener('click',function(e){
+//   this.style.backgroundColor = randomColor();
+//   console.log.apply('NAV',e.target);
+// });
